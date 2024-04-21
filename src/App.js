@@ -23,8 +23,8 @@ function addToDo(){
 
 }
 //functia de a sterge todo din lsta noastra
-function handleDeleteToDo(deleteToDo){ //primeste ca arg elementul pe care il vrem sters
-  const newToDos=toDos.filter(todo=>todo !==deleteToDo)
+function handleDeleteToDo(text){ //primeste ca arg elementul pe care il vrem sters
+  const newToDos=toDos.filter(toDo=>toDo !==text)
   setToDos(newToDos) //actualizam noua lista fara acel element
 
 }
@@ -40,7 +40,11 @@ function handleDeleteToDo(deleteToDo){ //primeste ca arg elementul pe care il vr
         {toDos.map((toDo)=>( //merge prin fiecare element din array todo si il returneaza ca un element li
           //prin key noi ii dam o valoare unica elementului li care este valoarea todo
           <li key={toDo}>{toDo}
-          <DeleteBtn onClick={handleDeleteToDo}>Delete</DeleteBtn>
+          <DeleteBtn onClick={()=>{
+            handleDeleteToDo(toDo)
+          }
+
+          }>Sterge</DeleteBtn>
           </li>
           //fiecare element li va avea bitonul delete
         ))}
